@@ -1,0 +1,7 @@
+Metadata for: part1_0_13s
+==============================
+
+Body part indexes:
+[ 0]
+
+Total timesteps: 649

@@ -1,0 +1,7 @@
+Metadata for: action_clip_martial_fixed
+==============================
+
+Body part indexes:
+[ 0]
+
+Total timesteps: 257
