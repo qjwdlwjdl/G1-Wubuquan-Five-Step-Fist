@@ -31,11 +31,11 @@ with fast punches (peak joint speed 45 rad/s) and turns in both directions.
    variant via Ultimate Bots Studio), converted to SONIC motion_lib format,
    validated: no NaN/Inf, no floor penetration.
 2. Fine-tuned official SONIC release checkpoint:
-   - V1: 4000 iterations on the single motion (2048 envs).
-     Result: mpjpe_g 179.4 mm — root drift remained high (172.0 mm), showing
+   - V1: 4000 iterations on the single motion (2048 envs). — root drift remained high (172.0 mm), showing
      that plain fine-tuning alone is insufficient for the long-horizon root
-     motion. (V1.1 root-focused refinement was started but suspended when the
-     compute budget ran out; results will be updated here.)
+     motion. V1.1 (root-focused refinement, final): 1500 more iterations with
+     tracking_anchor_pos weight 1.0 (std 0.2) and lr 1e-5.
+     Result: mpjpe_g 128.2 mm, root drift 118.6 mm (down 24%/26% vs baseline).
 3. Evaluation with the official pipeline (mpjpe_g / mpjpe_l / root drift),
    exported ONNX for deployment.
 
@@ -47,9 +47,9 @@ baseline 138.8 mm → V1 **103.8 mm** (mpjpe_g), ONNX included in `onnx/`.
 
 | Metric | Stock SONIC | Wubuquan V1 | Martial clip V1 (backup) |
 |---|---|---|---|
-| mpjpe_g | 168.2 mm | 179.4 mm | **103.8 mm** |
-| mpjpe_l | 42.9 mm | 48.4 mm | **38.4 mm** |
-| root drift | 159.7 mm | 172.0 mm | **95.8 mm** |
+| mpjpe_g | 168.2 mm | 179.4 mm | **128.2 mm** |
+| mpjpe_l | 42.9 mm | 48.4 mm | **46.8 mm** |
+| root drift | 159.7 mm | 172.0 mm | **118.6 mm** |
 
 ## Credit
 
