@@ -21,7 +21,8 @@ with fast punches (peak joint speed 45 rad/s) and turns in both directions.
   straight punches (45 rad/s) require precise ankle/hip coordination across
   very different pose regimes.
 - **Stock SONIC cannot do it**: baseline global MPJPE 168.2 mm with root drift
-  of 159.7 mm after 13 s.
+  of 159.7 mm; every baseline eval env terminates at step 272/649 (5.4 s) and
+  never finishes the routine.
 - **Physical plausibility**: full-body coordination under changing support
   stances; physics/RL required.
 
@@ -33,11 +34,16 @@ with fast punches (peak joint speed 45 rad/s) and turns in both directions.
 2. Fine-tuned official SONIC release checkpoint:
    - V1: 4000 iterations on the single motion (2048 envs). — root drift remained high (172.0 mm), showing
      that plain fine-tuning alone is insufficient for the long-horizon root
-     motion. V1.1 (root-focused refinement, final): 1500 more iterations with
-     tracking_anchor_pos weight 1.0 (std 0.2) and lr 1e-5.
-     Result: mpjpe_g 128.2 mm, root drift 118.6 mm (down 24%/26% vs baseline).
+     motion.
+   - V1.1 (final): 1500 more iterations with `tracking_anchor_pos` weight 1.0
+     (std 0.2) and actor lr 1e-5.
+     Result: **mpjpe_g 128.2 mm, mpjpe_l 46.8 mm, root drift 118.6 mm** — down
+     24%/26% vs the stock baseline — and all 32 eval envs now survive the
+     full 649-step (12.98 s) motion (the stock baseline dies at step 272).
 3. Evaluation with the official pipeline (mpjpe_g / mpjpe_l / root drift),
-   exported ONNX for deployment.
+   exported ONNX for deployment. Demo videos (before/after, follow camera,
+   robot in frame for the whole routine) are in the `zcode-transfer` release
+   `videos-v5-final`.
 
 *Alternate candidate (backup):* a 5.14 s in-place martial-arts clip
 (`action_clip_martial_fixed`) also fine-tuned during this trial —
@@ -45,11 +51,11 @@ baseline 138.8 mm → V1 **103.8 mm** (mpjpe_g), ONNX included in `onnx/`.
 
 ## Results
 
-| Metric | Stock SONIC | Wubuquan V1 | Martial clip V1 (backup) |
-|---|---|---|---|
-| mpjpe_g | 168.2 mm | 179.4 mm | **128.2 mm** |
-| mpjpe_l | 42.9 mm | 48.4 mm | **46.8 mm** |
-| root drift | 159.7 mm | 172.0 mm | **118.6 mm** |
+| Metric | Stock SONIC | Wubuquan V1 | **Wubuquan V1.1 (final)** | Martial clip V1 (backup) |
+|---|---|---|---|---|
+| mpjpe_g | 168.2 mm | 179.4 mm | **128.2 mm** | **103.8 mm** |
+| mpjpe_l | 42.9 mm | 48.4 mm | **46.8 mm** | **38.4 mm** |
+| root drift | 159.7 mm | 172.0 mm | **118.6 mm** | **95.8 mm** |
 
 ## Credit
 
