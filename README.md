@@ -73,10 +73,22 @@ directions.
 - The "after" clip runs the complete 12.98 s routine; the "before" clip
   stops where the stock policy fails (4.56 s).
 
+## Releases (this repository)
+
+- `videos-v1` — before / after full-body videos (see above)
+- `v1-checkpoints` — V1, V1.1 and base checkpoints
+  (`wubuquan_v1.pt`, `wubuquan_step4000.pt`, `wubuquan_v11.pt`,
+  `martial_clip_v1.pt`, `sonic_release_base.pt`)
+- `run-config-v11` — exact `config.yaml` / `meta.yaml` of the V1.1 run
+  (reproducibility; used together with `v1-checkpoints` and the commands in
+  `config/training_config.md`)
+
 ## Repository Contents
 
 - `README.md` — this write-up
 - `config/` — training config & commands, dataset / ONNX cards
+- `docs/` — `TUNING-NOTES.md`: full tuning campaign (V1 / V1.1 / two
+  rejected experiments) and why V1.1 was chosen as final
 - `eval/` — official eval trajectories (npz) and metrics
 - `data/` — motion data (SONIC motion_lib pkl + raw Kimodo CSVs)
 - `onnx/` — exported fine-tuned policy (`model_step_001500_*` final,
