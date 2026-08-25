@@ -1,0 +1,24 @@
+NOTICE
+===========================================================================
+
+This repository distributes fine-tuned (derivative) weights of the NVIDIA
+SONIC / GR00T-WholeBodyControl (GEAR-SONIC) whole-body control foundation
+model, as well as SONIC-derived software artifacts.
+
+Model and model derivatives:
+
+  Licensed by NVIDIA Corporation under the NVIDIA Open Model License.
+  See the LICENSE file in this repository for the full license text.
+
+  Source code of the SONIC / GR00T-WholeBodyControl project is licensed
+  under the Apache License 2.0:
+  https://github.com/NVlabs/GR00T-WholeBodyControl
+
+  License questions: gear-wbc@nvidia.com
+
+The fine-tuned weights in this repository ("Wubuquan model") are Derivative
+Models of NVIDIA's SONIC model. Use of these weights is subject to the
+NVIDIA Open Model License and NVIDIA's Trustworthy AI terms.
+
+The motion data in this repository is generated with NVIDIA Kimodo and is
+credited as "Motion Data by Bones Studio".
