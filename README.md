@@ -68,9 +68,8 @@ directions.
 
 ## Demo Videos
 
-- Full-body (Isaac Sim, follow camera, failure-cut):
-  `zcode-transfer` release `videos-v5-final` — `wbq_before.mp4` /
-  `wbq_after.mp4`.
+- Full-body (Isaac Sim, follow camera, failure-cut): this repository's
+  release **`videos-v1`** — `wbq_before.mp4` / `wbq_after.mp4`.
 - The "after" clip runs the complete 12.98 s routine; the "before" clip
   stops where the stock policy fails (4.56 s).
 
